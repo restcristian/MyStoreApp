@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, ImageBackground, StatusBar, TouchableOpacity } from 'react-native';
-import { Form, Item, Input} from 'native-base';
+import { Form, Item, Input } from 'native-base';
 
 export default class Home extends Component {
 
     state = {
-        username:'',
-        password:''
+        username: '',
+        password: ''
     };
 
     static navigationOptions = ({ navigation }) => {
@@ -14,8 +14,11 @@ export default class Home extends Component {
             header: null
         }
     }
-    onSignInHandler = () =>{
+    onSignInHandler = () => {
         this.props.navigation.replace('Home');
+    }
+    onSignUpHandler = () => {
+        
     }
     render() {
         return (
@@ -24,13 +27,13 @@ export default class Home extends Component {
                 <Form style={styles.Form}>
                     <Item rounded style={styles.InputItem}>
                         <Input
-                            onChangeText = {(text)=>{this.setState({username:text})}}
+                            onChangeText={(text) => { this.setState({ username: text }) }}
                             placeholder="Username"
                             style={styles.Input} />
                     </Item>
                     <Item rounded style={styles.InputItem}>
                         <Input
-                            onChangeText = {(text)=>{this.setState({password:text})}}
+                            onChangeText={(text) => { this.setState({ password: text }) }}
                             placeholder="Password"
                             secureTextEntry
                             style={styles.Input} />
@@ -38,11 +41,13 @@ export default class Home extends Component {
                 </Form>
                 <View style={styles.Buttons}>
                     <TouchableOpacity
-                         onPressOut = {this.onSignInHandler}
-                         style={[styles.Button, styles.ButtonSignIn]}>
+                        onPress={this.onSignInHandler}
+                        style={[styles.Button, styles.ButtonSignIn]}>
                         <Text style={[styles.ButtonText, styles.ButtonTextSignIn]}>SIGN IN</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={[styles.Button, styles.ButtonSignUp]}>
+                    <TouchableOpacity
+                        onPress = {this.onSignUpHandler}
+                        style={[styles.Button, styles.ButtonSignUp]}>
                         <Text style={styles.ButtonText}>SIGN UP</Text>
                     </TouchableOpacity>
                 </View>
@@ -70,8 +75,8 @@ const styles = StyleSheet.flatten({
     Buttons: {
         flexDirection: 'row',
         justifyContent: 'center',
-        paddingHorizontal: 24,
-        paddingVertical:24
+        paddingHorizontal: 35,
+        paddingVertical: 24
     },
     Button: {
         width: '50%',
@@ -80,22 +85,22 @@ const styles = StyleSheet.flatten({
         backgroundColor: 'rgba(0,0,0,0)',
         borderWidth: 1,
         borderColor: '#000',
-        paddingVertical:12
+        paddingVertical: 12
     },
-    ButtonSignIn:{
-        borderColor:'#fff'
+    ButtonSignIn: {
+        borderColor: '#fff'
     },
-    ButtonSignUp:{
-        backgroundColor:'rgba(255,255,255,0.2)'
+    ButtonSignUp: {
+        backgroundColor: 'rgba(255,255,255,0)'
     },
-    ButtonText:{
-        fontSize:18,
-        fontWeight:'bold',
-        color:'#000',
-        textAlign:'center'
+    ButtonText: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#000',
+        textAlign: 'center'
     },
-    ButtonTextSignIn:{
-        color:'#fff'
+    ButtonTextSignIn: {
+        color: '#fff'
     }
 
 });
