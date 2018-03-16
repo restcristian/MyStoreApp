@@ -3,8 +3,6 @@ import { Container, Header, Icon, Button, Left, Right, Body, Title } from 'nativ
 import { View, StyleSheet } from 'react-native';
 
 export default class MainNav extends Component {
-
-
     render() {
 
         return (
@@ -29,7 +27,7 @@ export default class MainNav extends Component {
                                 <Icon ios="ios-cart" android="md-cart" />
                             </Button>
                             <Button
-                                onPress={() => this.props.navigation.navigate('Login')}
+                                onPress={() => this.props.navigation.replace('Login')}
                                 transparent>
                                 <Icon ios="ios-pricetag" android="md-pricetag" />
                             </Button>

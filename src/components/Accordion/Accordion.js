@@ -34,7 +34,6 @@ export default class Accordion extends Component {
 
         });
 
-
     }
 
     render() {
@@ -67,7 +66,7 @@ const styles = StyleSheet.create({
     AccordionHeader: {
         flexDirection: 'row',
         alignItems: 'center',
-        paddingVertical: 10
+        paddingVertical: 10,
     },
     AccordionTitle: {
         paddingLeft: 12,

@@ -17,6 +17,10 @@ export default class Details extends Component {
                     screenProps={screenProps} />
         }
     }
+    addToCartHandler = () => {
+        const {params} = this.props.navigation.state;
+
+    }
     render() {
         const { params } = this.props.navigation.state;
         let content = null;
@@ -24,11 +28,14 @@ export default class Details extends Component {
             content = (
                 <View style={styles.Inner}>
                     <View style={styles.ActionButtons}>
-                        <TouchableOpacity style={[styles.ActionButton, styles.WishButton]}>
+                        <TouchableOpacity
+                            style={[styles.ActionButton, styles.WishButton]}>
                             <Text style={styles.ButtonText}>ADD TO WISH LIST</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={[styles.ActionButton, styles.CartButton]}>
-                            <Text style={styles.ButtonText}>ADD TO CART</Text>
+                        <TouchableOpacity
+                            style={[styles.ActionButton, styles.CartButton]}
+                            onPress={this.addToCartHandler}>
+                            <Text style={[styles.ButtonText]}>ADD TO CART</Text>
                         </TouchableOpacity>
                     </View>
                     <View style={styles.Content}>
@@ -41,11 +48,9 @@ export default class Details extends Component {
                                 <Text style={styles.Price}>${params.price.toFixed(2)}</Text>
                             </View>
                         </View>
-
-                        <Accordion title = "Description">
+                        <Accordion title="Description">
                             <Text>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis at incidunt eveniet suscipit libero quis cupiditate, sint in fugiat asperiores veritatis ex ab delectus quod accusantium reprehenderit sed earum dolore.</Text>
                         </Accordion>
-                        
                     </View>
                 </View>
             );
@@ -84,6 +89,7 @@ const styles = StyleSheet.create({
         width: '50%',
         paddingHorizontal: 5
     },
+    
     ButtonText: {
         color: '#fff',
         textAlign: 'center',
