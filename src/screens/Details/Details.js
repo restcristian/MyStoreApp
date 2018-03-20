@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, TouchableWithoutFeedback, Modal } from 'react-native';
 import MainNav from '../../components/MainNav/MainNav';
 import Accordion from '../../components/Accordion/Accordion';
+import Amount from '../../components/Amount/Amount';
 import { Icon } from 'native-base';
 
 export default class Details extends Component {
     state = {
         currentImage: {},
+        isModalOpen: true,
+        amountToPurchase: 0
     }
     static navigationOptions = ({ navigation, screenProps }) => {
         return {
@@ -18,8 +21,25 @@ export default class Details extends Component {
         }
     }
     addToCartHandler = () => {
-        const {params} = this.props.navigation.state;
-
+        const { params } = this.props.navigation.state;
+        alert('Item added to cart!');
+    }
+    onAddItemHandler = () => {
+        this.setState((prevState) => {
+            return {
+                amountToPurchase: prevState.amountToPurchase + 1
+            };
+        });
+    }
+    onRemoveItemHandler = () => {
+        this.setState((prevState) => {
+            return {
+                amountToPurchase: prevState.amountToPurchase  === 0 ? 0 :prevState.amountToPurchase - 1
+            };
+        });
+    }
+    onCloseModalHandler = () => {
+        this.setState({isModalOpen:false});
     }
     render() {
         const { params } = this.props.navigation.state;
@@ -27,6 +47,12 @@ export default class Details extends Component {
         if (this.props.navigation.state.params) {
             content = (
                 <View style={styles.Inner}>
+                    <Amount
+                        amount={this.state.amountToPurchase}
+                        isModalOpen={this.state.isModalOpen}
+                        onClose = {this.onCloseModalHandler}
+                        onAddItem={this.onAddItemHandler}
+                        onRemoveItem={this.onRemoveItemHandler} />
                     <View style={styles.ActionButtons}>
                         <TouchableOpacity
                             style={[styles.ActionButton, styles.WishButton]}>
@@ -89,7 +115,7 @@ const styles = StyleSheet.create({
         width: '50%',
         paddingHorizontal: 5
     },
-    
+
     ButtonText: {
         color: '#fff',
         textAlign: 'center',

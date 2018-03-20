@@ -4,6 +4,9 @@ import { Icon } from 'native-base';
 import MainNav from '../../components/MainNav/MainNav';
 
 export default class Cart extends Component {
+    state = {
+        totalPrice:0
+    };
     static navigationOptions = ({ navigation, screenProps }) => {
         return {
             headerTitle:
@@ -13,6 +16,7 @@ export default class Cart extends Component {
                     screenProps={screenProps} />
         }
     }
+    
     render() {
         return (
             <ScrollView style={styles.Cart}>
@@ -37,29 +41,11 @@ export default class Cart extends Component {
                                 </TouchableOpacity>
                             </View>
                         </View>
-                        <View style={styles.Item}>
-                            <View style={styles.ImageContainer}>
-                                <Image style={styles.Image} source={require('../../assets/imgs/item1.png')} />
-                            </View>
-                            <View style={styles.Info}>
-                                <Text style={styles.ItemTitle}>Yellow Pants</Text>
-                                <View style={styles.Tags}>
-                                    <Text>Tag1</Text>
-                                </View>
-                            </View>
-                            <View>
-                                <Text>$12.55</Text>
-                            </View>
-                            <View style={{ position: 'absolute', top: 8, right: 12 }}>
-                                <TouchableOpacity>
-                                    <Icon name="close" style={{ fontSize: 18, color: '#d3d5d6' }} />
-                                </TouchableOpacity>
-                            </View>
-                        </View>
+                        
                     </View>
                     <View style = {styles.Overall}>
                         <Text style = {styles.OrderText}>ORDER TOTAL:</Text>
-                        <Text style = {styles.TotalText}>$0.00</Text>
+                        <Text style = {styles.TotalText}>${this.state.totalPrice.toFixed(2)}</Text>
                     </View>
                     <View style = {styles.Footer}>
                         <TouchableOpacity>
