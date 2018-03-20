@@ -22,15 +22,11 @@ export default class MainNav extends Component {
                     <Right>
                         <View style={styles.Right}>
                             <Button
-                                onPress={() => this.props.navigation.navigate('Details')}
+                                onPress={() => this.props.navigation.navigate('Cart')}
                                 transparent>
                                 <Icon ios="ios-cart" android="md-cart" />
                             </Button>
-                            <Button
-                                onPress={() => this.props.navigation.replace('Login')}
-                                transparent>
-                                <Icon ios="ios-pricetag" android="md-pricetag" />
-                            </Button>
+                            
                         </View>
                     </Right>
                 </Header>

@@ -19,6 +19,6 @@ export const RootStack = StackNavigator({
     }
 },
     {
-        initialRouteName: 'Cart'
+        initialRouteName: 'Login'
     }
 );

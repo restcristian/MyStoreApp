@@ -39,7 +39,7 @@ export default class Accordion extends Component {
     render() {
         return (
             <View style={styles.Accordion}>
-                <TouchableWithoutFeedback onPress={this.toggleAccordion}>
+                <TouchableWithoutFeedback onPress={this.toggleAccordion} >
                     <View style={styles.AccordionHeader}>
                         {this.state.isOpen ? <Icon name="close" /> : <Icon name="add" />}
                         <Text style={styles.AccordionTitle}>{this.props.title}</Text>
@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         paddingVertical: 10,
+       
     },
     AccordionTitle: {
         paddingLeft: 12,
